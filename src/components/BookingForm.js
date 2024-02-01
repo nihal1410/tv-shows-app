@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './BookingForm.css'; 
 
 const BookingForm = ({ showName }) => {
     const [formData, setFormData] = useState({
@@ -24,37 +25,29 @@ const BookingForm = ({ showName }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="booking-form">
             <h3>Book Tickets for {showName}</h3>
-            <div>
-                <label>
-                    Name:
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-                </label>
+            <div className="form-group">
+                <label>Name:</label>
+                <input type="text" className="form-control" name="name" value={formData.name} onChange={handleChange} required />
             </div>
-            <div>
-                <label>
-                    Email:
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-                </label>
+            <div className="form-group">
+                <label>Email:</label>
+                <input type="email" className="form-control" name="email" value={formData.email} onChange={handleChange} required />
             </div>
-            <div>
-                <label>
-                    Phone Number:
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
-                </label>
+            <div className="form-group">
+                <label>Phone Number:</label>
+                <input type="tel" className="form-control" name="phone" value={formData.phone} onChange={handleChange} required />
             </div>
-            <div>
-                <label>
-                    Number of Tickets:
-                    <select name="tickets" value={formData.tickets} onChange={handleChange}>
-                        {[1, 2, 3, 4, 5].map(num => (
-                            <option key={num} value={num}>{num}</option>
-                        ))}
-                    </select>
-                </label>
+            <div className="form-group">
+                <label>Number of Tickets:</label>
+                <select className="form-control" name="tickets" value={formData.tickets} onChange={handleChange}>
+                    {[1, 2, 3, 4, 5].map(num => (
+                        <option key={num} value={num}>{num}</option>
+                    ))}
+                </select>
             </div>
-            <button type="submit">Book Ticket</button>
+            <button type="submit" className="btn btn-primary mt-2">Book Ticket</button>
         </form>
     );
 };
